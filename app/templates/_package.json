@@ -18,15 +18,18 @@
     "url": "<%= githubUrl %>/<%= appname %>.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.spec.coffee"
+    "start": "casperjs command.js",
+    "test": "echo 'No Tests' && exit 0"
   },
   "dependencies": {
+    "casperjs": "^1.1.1"
   },
   "devDependencies": {
   },
   "peerDependencies": {
   },
   "engines": {
+    "phantomjs": ">=2.1.1",
     "node": ">=5.0.0",
     "npm": ">=3.0.0"
   },

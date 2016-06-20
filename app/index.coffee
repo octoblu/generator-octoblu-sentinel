@@ -41,9 +41,7 @@ class OctobluSentinelGenerator extends yeoman.Base
 
     done = @async()
 
-    console.log 'here'
     helpers.githubUserInfo @githubUser, (error, res) =>
-      console.log "not 'here'"
       @env.error error if error?
       @realname = res.name
       @email = res.email
@@ -59,12 +57,14 @@ class OctobluSentinelGenerator extends yeoman.Base
     classPrefix    = _.upperFirst instancePrefix
     constantPrefix = _.toUpper _.snakeCase @noSentinel
 
-    context = {@appname, @githubUrl, @realname, }
+    context = {@appname, @githubUrl, @realname, constantPrefix}
 
     @template '_package.json', 'package.json', context
     @template '_travis.yml', '.travis.yml', context
     @template '_README.md', 'README.md', context
     @template '_LICENSE', 'LICENSE', context
+    @template '_command.js', 'command.js', context
+    @template '_helpers.js', 'helpers.js', context
 
   install: =>
     return if @skipInstall
