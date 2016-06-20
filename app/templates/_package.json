@@ -1,0 +1,34 @@
+{
+  "name": "<%= appname %>",
+  "version": "1.0.0",
+  "description": "Sentinel is always watching",
+  "keywords": [
+    "sentinel",
+    "octoblu"
+  ],
+  "homepage": "<%= githubUrl %>/<%= appname %>",
+  "bugs": "<%= githubUrl %>/<%= appname %>/issues",
+  "author": {
+    "name": "<%= realname %>",
+    "url": "<%= githubUrl %>"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "<%= githubUrl %>/<%= appname %>.git"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*.spec.coffee"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+  },
+  "engines": {
+    "node": ">=5.0.0",
+    "npm": ">=3.0.0"
+  },
+  "license": "MIT"
+}
