@@ -1,6 +1,6 @@
 {
   "name": "generator-octoblu-sentinel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A generator for Yeoman",
   "keywords": [
     "yeoman-generator"
@@ -24,6 +24,7 @@
     "coffee-script": "^1.10.0",
     "github": "^1.2.0",
     "html-wiring": "^1.2.0",
+    "lodash": "^4.13.1",
     "yeoman-generator": "^0.23.4"
   },
   "devDependencies": {
