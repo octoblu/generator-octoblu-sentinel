@@ -1,6 +1,18 @@
 language: node_js
 node_js:
-  - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-octoblu-sentinel' ]; then cd .. && eval "mv $currentfolder generator-octoblu-sentinel" && cd generator-octoblu-sentinel; fi
+- '5'
+addons:
+  code_climate:
+    repo_token: b28cef01e28fa6bd4517935d6733305f5fac6998dec86eb72acbb455ba534c12
+before_script:
+- npm install -g codeclimate-test-reporter
+after_script:
+- codeclimate-test-reporter < coverage/lcov.info
+deploy:
+  provider: npm
+  email: serveradmin@octoblu.com
+  api_key:
+    secure: LGc2E+RIYTeYAxzCFO2+mzSQOISaXXzpuYGIdHLEPtkDPcIoM6JrFSli2Qx9V7oQ2TWT5yWDVYi0kH6LXGKN8TRodKtnAPza+xNUDjsu7JcKyppZILzF5WuVGzX3FLy3ggZn2CkdyG97wA3/48nxJRqfy3JigS444tFUWtOd29zWH87PJIDSPty6oq1ZmvFX+WJ6G6Ml59CPIioDfkh+bEzTg5RkIgp44yJyFG2bP7psqA5nAxShtrnwhfi5yqq2bnO2hebz7N5NicuxTk3+MU8ZTVfu4ddt3+hi2EpOJodAZaEfOkvFdUg8w38fCcZz3NDvrDNiEplnPr1XGjufxDH5dhAsSFyDQFk83O3ysU0aGXe6fayvx8YUbSL/IlLHhjo3H6DW8zXKTBzQX2Nq4OYZjsDiQpSTBdmsYYmwMasGntdRVG8CPfP+EAEr5j+59RqK0zWk/d3wAXFn+XvbZSDkY9mwQLdGWpF25YA4bc7I2NpR6KCYO1FX98XYpn84XLqJZAD1ZJcpWO/cAImEg5ZR6tZ4UgL3BH9whz+s6IT1PxDfFa4/j+Qu+Rwsf+Y2ZJbldOlb4foS6IUFGGK+1ee5bGPt+y+ggUupZBm7gOIn+RwkfKXRuQthKLKiKCxqvNxsMa7WwYXsCbYIxOUdlnExP/wPd2HJqf1SbY9TWCM=
+  on:
+    tags: true
+    branches: true
