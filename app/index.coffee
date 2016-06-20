@@ -32,7 +32,7 @@ class OctobluSentinelGenerator extends yeoman.Base
       default: 'octoblu'
     ]
 
-    @prompt prompts, (props) =>
+    @prompt(prompts).then (props) =>
       @githubUser = props.githubUser
       done()
 
@@ -41,7 +41,9 @@ class OctobluSentinelGenerator extends yeoman.Base
 
     done = @async()
 
+    console.log 'here'
     helpers.githubUserInfo @githubUser, (error, res) =>
+      console.log "not 'here'"
       @env.error error if error?
       @realname = res.name
       @email = res.email
@@ -66,9 +68,7 @@ class OctobluSentinelGenerator extends yeoman.Base
 
   install: =>
     return if @skipInstall
-
     @installDependencies npm: true, bower: false
-    @npmInstall "passport-#{@noEndo}", save: true
 
   end: =>
     return if @skipInstall
